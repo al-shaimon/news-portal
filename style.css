@@ -1,0 +1,16 @@
+
+#menu-all{
+  display: flex;
+  justify-content: space-between;
+}
+body{
+  /* background-color: gray; */
+  font-family: 'Poppins';
+}
+
+@media only screen and (max-width: 600px) {
+ #menu-all {
+    display: flex;
+    flex-direction: column;
+  }
+}
