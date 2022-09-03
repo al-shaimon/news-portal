@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bongo News Portal</title>
-    <!-- favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <!-- Bootstrap Cdn -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <title>World News Today</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css"
       rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
+      type="text/css"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="container">
+  <body>
     <header>
-      <!-- navbar -->
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand fluid" href="index.html">
-            <img
-              src="img/logo.png"
-              alt=""
-              width="130"
-              height="70"
-              class="d-inline-block align-text-top"
-            />
-          </a>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">News</a>
-              </li>
-              <li class="nav-item me-2">
-                <a class="nav-link active" aria-current="page" href="blogs.html">Blogs</a>
-              </li>
-              <li class="nav-item">
-                <a class="navbar-brand fluid" href="#">
-                  <img src="img/avatar.png" alt="" class="d-inline-block align-text-top" />
-                </a>
-              </li>
+      <nav>
+        <div class="navbar bg-base-100">
+          <div class="flex-1">
+            <a class="btn bg-blue-400 btn-ghost normal-case font-bold text-white">News</a>
+            <a class="font-bold" id="news" href="#">Today</a>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal p-0">
+              <li><a>News</a></li>
+              <li><a class="font-bold" href="js/blog.html">Blog</a></li>
             </ul>
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                  <img src="img/news.webp" />
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </nav>
-      <!-- horizontal line -->
-      <div class="text-success">
-        <hr />
-      </div>
-    </header>
-    <main>
-      <!-- categories -->
+      <section class="m-4">
+        <!-- manu -->
+        <ul id="menu-all" class="menu menu-horizontal bg-base-100 rounded-box"></ul>
+      </section>
+      <!-- total founds -->
       <section>
-        <div class="container text-center border">
-          <div class="row">
-            <div class="col-3 col-lg m-2">Breaking News</div>
-            <div class="col-3 col-lg m-2">Regular News</div>
-            <div class="col-3 col-lg m-2">International News</div>
-            <div class="col-3 col-lg m-2">Sports</div>
-            <div class="col-3 col-lg m-2">Entertainment</div>
-            <div class="col-3 col-lg m-2">Culture</div>
-            <div class="col-3 col-lg m-2">Arts</div>
-            <div class="col-3 col-lg m-2">All News</div>
+        <div class="bg-gray-100 ml-8 rounded">
+          <h1 class="font-bold text-2xl text-center mb-3">
+            <span id="found-total-news">0</span> news total found this catagoris
+          </h1>
+        </div>
+      </section>
+
+      <section>
+        <div class="navbar bg-base-100">
+          <div class="flex-1">
+            <a class="px-2">Sort By View:</a>
+            <a class="btn btn-disabled"> Defult </a>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal p-0">
+              <li><a class="btn bg-blue-400 text-white border-none">Today's Pick</a></li>
+              <li><a>Trending</a></li>
+            </ul>
           </div>
         </div>
       </section>
+    </header>
+    <main>
+      <!-- progress -->
+      <section>
+        <progress id="progress" class="progress w-full hidden"></progress>
+      </section>
+      <section>
+        <div id="not-found" class="flex place-content-center"></div>
+      </section>
+      <!-- all items show -->
+      <section id="card" class="m-4">
+        <!-- card -->
+      </section>
+      <!-- modal -->
+      <section>
+        <!-- Put this part before  tag -->
+        <div class="modal" id="my-modal-2"></div>
+      </section>
     </main>
-    <!-- js scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <!-- <script src="js/test.js"></script> -->
-    <script src="js/app.js"></script>
+    <script src="js/news.js"></script>
+    <script src="https://kit.fontawesome.com/b7366024a2.js" crossorigin="anonymous"></script>
   </body>
 </html>
